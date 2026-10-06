@@ -1,0 +1,17 @@
+[package]
+name = "cask-sdk-node"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lib]
+name = "cask_sdk_node"
+crate-type = ["cdylib"]
+
+[dependencies]
+cask-sdk-core = { path = "../cask-sdk-core" }
+napi = { version = "3.14.1", features = ["napi6"] }
+napi-derive = "3.6.11"
+
+[build-dependencies]
+napi-build = "2"

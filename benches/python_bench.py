@@ -1,4 +1,4 @@
-"""Run from crates/cask-python: .venv/bin/python ../../benches/python_bench.py
+"""Run from crates/cask-sdk-python: .venv/bin/python ../../benches/python_bench.py
 
 Requires `maturin develop --release` for representative numbers.
 """
@@ -7,7 +7,7 @@ import subprocess
 import time
 from pathlib import Path
 
-from cask_sdk import Cask
+from cask import Client, Config
 
 ROOT = Path(__file__).resolve().parents[1]
 SIZES = [(1_000, 20, 10), (100_000, 500, 50)]
@@ -38,7 +38,7 @@ def bench(customers, pvs, features):
     try:
         time.sleep(1.5 if customers > 10_000 else 0.5)
         t = time.perf_counter()
-        cask = Cask("test-key", base_url=url)
+        cask = Client(Config("test-key", base_url=url))
         cask.wait_until_ready(60)
         print(f"download+parse+index: {(time.perf_counter() - t) * 1e3:.1f} ms")
 

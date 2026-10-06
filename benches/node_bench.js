@@ -1,9 +1,9 @@
-// Run from crates/cask-node: npm run build && node ../../benches/node_bench.js
+// Run from crates/cask-sdk-node: npm run build && node ../../benches/node_bench.js
 const { spawn, execFileSync } = require('node:child_process')
 const net = require('node:net')
 const path = require('node:path')
 
-const { Cask } = require(path.resolve(__dirname, '../crates/cask-node'))
+const { Client } = require(path.resolve(__dirname, '../crates/cask-sdk-node'))
 
 const ROOT = path.resolve(__dirname, '..')
 const SIZES = [[1000, 20, 10], [100000, 500, 50]]
@@ -33,7 +33,7 @@ async function bench([customers, pvs, features]) {
   try {
     await sleep(customers > 10000 ? 1500 : 500)
     const t0 = process.hrtime.bigint()
-    const cask = new Cask('test-key', { baseUrl: `http://127.0.0.1:${port}` })
+    const cask = new Client({ apiKey: 'test-key', baseUrl: `http://127.0.0.1:${port}` })
     await cask.waitUntilReady(60)
     console.log(`download+parse+index: ${(Number(process.hrtime.bigint() - t0) / 1e6).toFixed(1)} ms`)
 

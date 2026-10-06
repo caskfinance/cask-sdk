@@ -97,25 +97,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "cask-node"
-version = "0.1.0"
-dependencies = [
- "cask-sdk",
- "napi",
- "napi-build",
- "napi-derive",
-]
-
-[[package]]
-name = "cask-python"
-version = "0.1.0"
-dependencies = [
- "cask-sdk",
- "pyo3",
-]
-
-[[package]]
 name = "cask-sdk"
+version = "0.1.0"
+dependencies = [
+ "cask-sdk-core",
+]
+
+[[package]]
+name = "cask-sdk-core"
 version = "0.1.0"
 dependencies = [
  "arc-swap",
@@ -126,6 +115,24 @@ dependencies = [
  "serde_json",
  "thiserror",
  "tiny_http",
+]
+
+[[package]]
+name = "cask-sdk-node"
+version = "0.1.0"
+dependencies = [
+ "cask-sdk-core",
+ "napi",
+ "napi-build",
+ "napi-derive",
+]
+
+[[package]]
+name = "cask-sdk-python"
+version = "0.1.0"
+dependencies = [
+ "cask-sdk-core",
+ "pyo3",
 ]
 
 [[package]]
