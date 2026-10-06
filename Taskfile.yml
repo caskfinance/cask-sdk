@@ -18,8 +18,8 @@ tasks:
         cmd: |
           echo "This will run:"
           echo "  scripts/version.py set {{.VERSION}}"
-          echo "  git commit -am \"Release {{.VERSION}}\""
-          echo "  git tag -a v{{.VERSION}} -m \"Release {{.VERSION}}\""
+          echo "  git commit -am \"Release v{{.VERSION}}\""
+          echo "  git tag -a v{{.VERSION}} -m \"Release v{{.VERSION}}\""
           echo "  git push --follow-tags"
           echo
       - silent: true
@@ -31,6 +31,6 @@ tasks:
             exit 1
           fi
       - scripts/version.py set {{.VERSION}}
-      - git commit -am "Release {{.VERSION}}"
-      - git tag -a v{{.VERSION}} -m "Release {{.VERSION}}"
+      - git commit -am "Release v{{.VERSION}}"
+      - git tag -a v{{.VERSION}} -m "Release v{{.VERSION}}"
       - git push --follow-tags
