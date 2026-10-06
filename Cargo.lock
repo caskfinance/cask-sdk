@@ -90,7 +90,7 @@ checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
 
 [[package]]
 name = "cask-mock-server"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "flate2",
  "tiny_http",
@@ -98,14 +98,14 @@ dependencies = [
 
 [[package]]
 name = "cask-sdk"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "cask-sdk-core",
 ]
 
 [[package]]
 name = "cask-sdk-core"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "arc-swap",
  "cask-mock-server",
@@ -119,7 +119,7 @@ dependencies = [
 
 [[package]]
 name = "cask-sdk-node"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "cask-sdk-core",
  "napi",
@@ -129,7 +129,7 @@ dependencies = [
 
 [[package]]
 name = "cask-sdk-python"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "cask-sdk-core",
  "pyo3",
