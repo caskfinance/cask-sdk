@@ -1,22 +1,29 @@
 {
-  "name": "@caskfinance/sdk",
-  "version": "0.1.0",
-  "description": "Cask SDK: fast, local entitlement checks",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "files": ["index.js", "index.d.ts"],
-  "publishConfig": { "access": "public" },
-  "napi": {
-    "binaryName": "cask-sdk",
-    "targets": []
-  },
-  "engines": { "node": ">=18" },
-  "scripts": {
-    "build": "napi build --platform --release",
-    "build:debug": "napi build --platform",
-    "test": "node --test test/*.test.js"
-  },
-  "devDependencies": {
-    "@napi-rs/cli": "^3.0.0"
-  }
+	"name": "@caskfinance/sdk",
+	"version": "0.0.1",
+	"description": "Cask SDK",
+	"main": "index.js",
+	"types": "index.d.ts",
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"napi": {
+		"binaryName": "cask-sdk",
+		"targets": []
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"scripts": {
+		"build": "napi build --platform --release",
+		"build:debug": "napi build --platform",
+		"test": "node --test test/*.test.js"
+	},
+	"devDependencies": {
+		"@napi-rs/cli": "^3.0.0"
+	}
 }
