@@ -19,7 +19,7 @@ tasks:
           echo "This will run:"
           echo "  scripts/version.py set {{.VERSION}}"
           echo "  git commit -am \"Release {{.VERSION}}\""
-          echo "  git tag v{{.VERSION}}"
+          echo "  git tag -a v{{.VERSION}} -m \"Release {{.VERSION}}\""
           echo "  git push --follow-tags"
           echo
       - silent: true
@@ -32,5 +32,5 @@ tasks:
           fi
       - scripts/version.py set {{.VERSION}}
       - git commit -am "Release {{.VERSION}}"
-      - git tag v{{.VERSION}}
+      - git tag -a v{{.VERSION}} -m "Release {{.VERSION}}"
       - git push --follow-tags
