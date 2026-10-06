@@ -10,4 +10,4 @@ version.workspace = true
 name = "cask"
 
 [dependencies]
-cask-sdk-core = { path = "../cask-sdk-core", version = "=0.0.3" }
+cask-sdk-core = { path = "../cask-sdk-core", version = "=0.0.4" }
