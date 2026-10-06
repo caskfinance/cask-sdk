@@ -30,9 +30,19 @@ def node_version() -> str:
 
 def check() -> int:
     expected = workspace_version()
+    mismatches = []
     found = node_version()
     if found != expected:
-        print(f"package.json is {found}, Cargo.toml is {expected}", file=sys.stderr)
+        mismatches.append(f"package.json is {found}, Cargo.toml is {expected}")
+    for manifest in sorted(ROOT.glob("crates/*/Cargo.toml")):
+        for match in PIN_RE.finditer(manifest.read_text()):
+            if match.group(2) != expected:
+                mismatches.append(
+                    f"{manifest.relative_to(ROOT)} pins cask-sdk-core ={match.group(2)}, "
+                    f"Cargo.toml is {expected}"
+                )
+    if mismatches:
+        print("\n".join(mismatches), file=sys.stderr)
         return 1
     print(f"all versions are {expected}")
     return 0
