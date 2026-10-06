@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CARGO = ROOT / "Cargo.toml"
 NODE = ROOT / "crates/cask-sdk-node"
 VERSION_RE = re.compile(r'^(version\s*=\s*")([^"]+)(")', re.M)
+PIN_RE = re.compile(r'(cask-sdk-core\s*=\s*\{[^}]*version\s*=\s*"=)([^"]+)(")')
 
 
 def workspace_version() -> str:
@@ -44,6 +45,11 @@ def set_version(version: str) -> int:
     head, sep, tail = CARGO.read_text().partition("[workspace.package]")
     tail = VERSION_RE.sub(lambda m: m.group(1) + version + m.group(3), tail, count=1)
     CARGO.write_text(head + sep + tail)
+    for manifest in ROOT.glob("crates/*/Cargo.toml"):
+        text = manifest.read_text()
+        updated = PIN_RE.sub(lambda m: m.group(1) + version + m.group(3), text)
+        if updated != text:
+            manifest.write_text(updated)
     subprocess.run(["cargo", "update", "--workspace", "--offline"], cwd=ROOT, check=True)
     subprocess.run(
         ["npm", "version", version, "--no-git-tag-version", "--allow-same-version"],
