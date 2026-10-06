@@ -2,6 +2,11 @@
 	"name": "@caskfinance/sdk",
 	"version": "0.0.1",
 	"description": "Cask SDK",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/caskfinance/cask-sdk.git",
+		"directory": "crates/cask-sdk-node"
+	},
 	"main": "index.js",
 	"types": "index.d.ts",
 	"files": [
