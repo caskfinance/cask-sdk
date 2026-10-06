@@ -1,10 +1,13 @@
 [package]
 name = "cask-sdk"
-version.workspace = true
+description.workspace = true
 edition.workspace = true
+license.workspace = true
+repository.workspace = true
+version.workspace = true
 
 [lib]
 name = "cask"
 
 [dependencies]
-cask-sdk-core = { path = "../cask-sdk-core" }
+cask-sdk-core = { path = "../cask-sdk-core", version = "=0.0.1" }

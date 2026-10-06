@@ -1,7 +1,10 @@
 [package]
 name = "cask-sdk-core"
-version.workspace = true
+description.workspace = true
 edition.workspace = true
+license.workspace = true
+repository.workspace = true
+version.workspace = true
 
 [lib]
 name = "cask_sdk_core"
