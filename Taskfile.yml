@@ -1,0 +1,36 @@
+version: "3"
+
+tasks:
+  release:
+    desc: "Bump versions, commit, tag and push. Usage: task release -- 0.1.0"
+    interactive: true
+    vars:
+      VERSION: "{{.CLI_ARGS}}"
+    preconditions:
+      - sh: test -n "{{.VERSION}}"
+        msg: "version required, e.g. task release -- 0.1.0"
+      - sh: git diff --quiet && git diff --cached --quiet
+        msg: "working tree has uncommitted changes"
+      - sh: "! git rev-parse -q --verify refs/tags/v{{.VERSION}}"
+        msg: "tag v{{.VERSION}} already exists"
+    cmds:
+      - silent: true
+        cmd: |
+          echo "This will run:"
+          echo "  scripts/version.py set {{.VERSION}}"
+          echo "  git commit -am \"Release {{.VERSION}}\""
+          echo "  git tag v{{.VERSION}}"
+          echo "  git push --follow-tags"
+          echo
+      - silent: true
+        cmd: |
+          printf "Confirm the version to continue: "
+          read -r reply
+          if [ "$reply" != "{{.VERSION}}" ]; then
+            echo "Version did not match, aborting." >&2
+            exit 1
+          fi
+      - scripts/version.py set {{.VERSION}}
+      - git commit -am "Release {{.VERSION}}"
+      - git tag v{{.VERSION}}
+      - git push --follow-tags
