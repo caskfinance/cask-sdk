@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cask SDK demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 32rem; margin: 2rem auto; padding: 0 1rem; }
+    label { display: block; margin-top: 1rem; font-weight: 600; }
+    input, select { width: 100%; padding: .4rem; box-sizing: border-box; }
+    button { margin-top: 1.5rem; padding: .5rem 1rem; }
+    .box { margin-top: 1.5rem; padding: 1rem; border-radius: 6px; font-family: monospace; }
+    .ok { background: #e6f4ea; }
+    .err { background: #fdecea; }
+  </style>
+</head>
+<body>
+  <h1>Cask SDK demo</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label for="api_key">API key</label>
+    <input id="api_key" name="api_key" value="{{ values.api_key }}" required>
+
+    <label for="base_url">Base URL (optional)</label>
+    <input id="base_url" name="base_url" value="{{ values.base_url }}" placeholder="http://127.0.0.1:8099">
+
+    <label for="customer">Customer</label>
+    <input id="customer" name="customer" value="{{ values.customer }}" required>
+
+    <label for="feature">Feature</label>
+    <input id="feature" name="feature" value="{{ values.feature }}" required>
+
+    <label for="check">Check</label>
+    <select id="check" name="check">
+      {% for c in checks %}
+        <option value="{{ c }}" {% if c == values.check %}selected{% endif %}>check_{{ c }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">Run check</button>
+  </form>
+
+  {% if result %}<div class="box ok">Result: {{ result }}</div>{% endif %}
+  {% if error %}<div class="box err">{{ error }}</div>{% endif %}
+</body>
+</html>

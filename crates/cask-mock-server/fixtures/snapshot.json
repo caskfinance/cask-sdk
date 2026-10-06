@@ -1,0 +1,39 @@
+{
+  "features": [
+    { "key": "sso", "type": "BOOLEAN" },
+    { "key": "seats", "type": "NUMERIC" },
+    { "key": "support_tier", "type": "ENUM" }
+  ],
+  "product_versions": [
+    {
+      "token": "product_version_01A1096FB15277DC9BCBF32C62B45101",
+      "entitlements": [
+        { "feature": "sso", "value": false },
+        { "feature": "seats", "value": 3 },
+        { "feature": "support_tier", "value": "community" }
+      ]
+    },
+    {
+      "token": "product_version_01A1096FB15277DC9BCBF32C62B45102",
+      "entitlements": [
+        { "feature": "sso", "value": true },
+        { "feature": "seats", "value": 25 },
+        { "feature": "support_tier", "value": "priority" }
+      ]
+    },
+    {
+      "token": "product_version_01A1096FB15277DC9BCBF32C62B45103",
+      "entitlements": [
+        { "feature": "seats", "value": "unlimited" }
+      ]
+    }
+  ],
+  "customers": {
+    "customer_01A10971485672EFB40302EAE6021F01": ["product_version_01A1096FB15277DC9BCBF32C62B45101"],
+    "customer_01A10971485672EFB40302EAE6021F02": ["product_version_01A1096FB15277DC9BCBF32C62B45102"],
+    "customer_01A10971485672EFB40302EAE6021F03": [
+      "product_version_01A1096FB15277DC9BCBF32C62B45102",
+      "product_version_01A1096FB15277DC9BCBF32C62B45103"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+[package]
+name = "cask-python"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lib]
+name = "_cask"
+crate-type = ["cdylib"]
+
+[dependencies]
+cask-sdk = { path = "../cask-core" }
+pyo3 = { version = "0.29.3", features = ["abi3-py39"] }

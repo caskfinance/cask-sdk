@@ -1,0 +1,9 @@
+[package]
+name = "cask-mock-server"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+flate2 = "1"
+tiny_http = "0.12"

@@ -1,1 +1,7 @@
 /target
+.venv
+__pycache__
+*.so
+db.sqlite3
+.ruff_cache
+.pytest_cache
